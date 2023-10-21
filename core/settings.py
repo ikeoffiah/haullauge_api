@@ -30,8 +30,7 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = ["haullauge.onrender.com"]
-
+ALLOWED_HOSTS = ["haullauge.onrender.com","127.0.0.1"]
 
 # Application definition
 

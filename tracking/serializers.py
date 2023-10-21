@@ -31,13 +31,10 @@ class TrackingSerializer(serializers.ModelSerializer):
         if status is not None:
             if status == TRACKING_STATUS.PICKUP:
                 haul = Hauls.objects.get(booking=track)
-                send_push_notification(haul.user.id,f"Your driver ({haul.user.first_name}) has arrived at pick up location", "Truck arrived")
+                send_push_notification(haul.user.id,f"Your driver,{haul.driver.first_name}, {haul.driver.last_name}, has arrived at pick up location", "Truck arrived")
             if status == TRACKING_STATUS.DELIVERY:
-                print(track)
                 haul = Hauls.objects.get(booking=track)
-                print("-------------------------------------------------")
-                print(haul.user.id)
-                send_push_notification(haul.user.id,f"Your driver ({haul.user.first_name}) has arrived at delivery location", "Load delivered")
+                send_push_notification(haul.user.id,f"Your driver ,{haul.driver.first_name}, {haul.driver.last_name}, has arrived at delivery location", "Load delivered")
 
                 haul.status = HAUL_STATUS.Delivered
                 haul.save()
