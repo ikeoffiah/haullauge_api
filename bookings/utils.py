@@ -89,10 +89,9 @@ def others(distance, load, fuel_price):
 
 def send_push_notification(user_id,message, Title):
     user = User.objects.get(id=user_id)
-    print("here----------")
     device_token = user.device_token
     fcm_url = 'https://fcm.googleapis.com/fcm/send'
-    print(device_token)
+
     headers = {
         'Authorization': f'key={FCM_SERVER_KEY}',
         'Content-Type': 'application/json',
