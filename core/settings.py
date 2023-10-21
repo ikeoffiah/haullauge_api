@@ -30,7 +30,7 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = ["6884-102-176-65-110.ngrok-free.app","127.0.0.1"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
