@@ -30,7 +30,7 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["haullauge.onrender.com"]
 
 
 # Application definition
