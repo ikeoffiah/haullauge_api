@@ -34,7 +34,7 @@ def format_string_datetime(date_value, time_value):
     print(date_value)
     print(time_value)
     print("----------------------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    combined_datetime = datetime.strptime(date_value + " " + f"{time_value} am", "%Y-%m-%d %I:%M %p")
+    combined_datetime = datetime.strptime(date_value + " " + f"{time_value}", "%Y-%m-%d %I:%M %p")
     formatted_datetime = combined_datetime.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
     return formatted_datetime
 
