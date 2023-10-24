@@ -9,7 +9,7 @@ from .serializers import BookingSerializer, HaulSerializer, FileUploadSerializer
 from rest_framework.response import Response
 from accounts.utils import create_account
 from authentication.utils import generate_send_otp, verify_otp, success_message_helper, error_message_helper, send_drivers_msg, system_error_message_helper, generateReferenceId
-from .utils import calculatePrice
+from .utils import calculatePrice, send_push_notification
 from authentication.models import User, Drivers
 import cloudinary
 from django.http import Http404
@@ -107,7 +107,10 @@ class AcceptHaulView(APIView):
         haul.save()
         # send notification if a driver is assigned to a haul
         print("Send Notification")
-
+        user_id = haul.user.id
+        driver_first_name = request.user.first_name
+        driver_last_name = request.user.last_name
+        send_push_notification(user_id,f"{driver_first_name} {driver_last_name} (Driver) accepted your haul", "Haul accepted")
         pickUp_price = booking.pickup_price
         delivery_price = booking.delivery_price
         create_account(request.user.id, pickUp_price, delivery_price, booking)

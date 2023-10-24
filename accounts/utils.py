@@ -61,8 +61,8 @@ class UpdateAccountThread(threading.Thread):
     def run(self):
         user_account = Account.objects.get(user=self.user)
 
-        user_account.amount = self.total_price
-        user_account.debt = self.debt
+        user_account.amount = self.total_price + user_account.amount
+        user_account.debt = self.debt + user_account.debt
         user_account.deadline = self.new_date
 
         user_account.save()
