@@ -29,4 +29,8 @@ urlpatterns = [
     path('api/tracking/', include('tracking.urls'))
 ]
 
+admin.site.site_header = "Haullauge Dashboard"
+admin.site.site_title = "Haullauge Dashboard"
+# admin.site.index_title = "Welcome to UMSRA Researcher Portal"
+
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
