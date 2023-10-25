@@ -3,7 +3,7 @@ from .models import Notifications
 from authentication.models import User
 
 def create_notification(user_id,message, Title):
-    return CreateNoficationThread(user_id,message,Title)
+    return CreateNoficationThread(user_id,message,Title).start()
 
 class CreateNoficationThread(threading.Thread):
 
