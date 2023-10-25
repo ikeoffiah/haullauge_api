@@ -1,6 +1,7 @@
 import requests
 from authentication.models import User
 from core.settings import FCM_SERVER_KEY
+from notification.utils import create_notification
 import math
 from datetime import datetime
 
@@ -110,6 +111,7 @@ def send_push_notification(user_id,message, Title):
     if 'error' in response_data:
         return False
     print("Trueeee")
+    create_notification(message, Title)
     return True
 
 
