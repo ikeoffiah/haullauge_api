@@ -111,7 +111,7 @@ def send_push_notification(user_id,message, Title):
     if 'error' in response_data:
         return False
     print("Trueeee")
-    create_notification(message, Title)
+    create_notification(user_id,message, Title)
     return True
 
 
