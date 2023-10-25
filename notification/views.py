@@ -22,7 +22,8 @@ class GetNotifications(generics.GenericAPIView):
     permission_classes = [IsAuthenticated, ]
 
     def get(self,request):
-        notification = Notifications.objects.filter(user=request.user).update(is_read=True)
+        Notifications.objects.filter(user=request.user).update(is_read=True)
+        notification = Notifications.objects.filter(user=request.user)
         serializer = self.serializer_class(notification, many=True)
         return Response(success_message_helper(serializer.data, 'Notifications successfully fetched'),
                         status=status.HTTP_200_OK)
