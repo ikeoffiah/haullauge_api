@@ -23,7 +23,7 @@ class GetNotifications(generics.GenericAPIView):
 
     def get(self,request):
         Notifications.objects.filter(user=request.user).update(is_read=True)
-        notification = Notifications.objects.filter(user=request.user)
+        notification = Notifications.objects.filter(user=request.user).order_by('-updated_at')
         serializer = self.serializer_class(notification, many=True)
         return Response(success_message_helper(serializer.data, 'Notifications successfully fetched'),
                         status=status.HTTP_200_OK)
