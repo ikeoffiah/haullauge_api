@@ -61,12 +61,11 @@ class LoginSerializer(serializers.ModelSerializer):
 
         user = User.objects.get(phone_number=phone_number)
 
-        if not authenticate_user_with_password(phone_number, password, device_token):
-            raise serializers.ValidationError('Phone number or Password is invalid')
-
         if not active_user_verification(phone_number):
             raise serializers.ValidationError("You hasn't verified phone number")
 
+        if not authenticate_user_with_password(phone_number, password, device_token):
+            raise serializers.ValidationError('Phone number or Password is invalid')
 
 
         return {
@@ -253,7 +252,6 @@ class SingleDriverRegistrationSerializer(serializers.ModelSerializer):
 
 class ForgotPasswordSerializer(serializers.Serializer):
     phone_number = serializers.CharField()
-
 
     def validate(self, attrs):
         phone_number = attrs.get("phone_number", None)

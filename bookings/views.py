@@ -239,13 +239,13 @@ class GetDriverHauls(generics.GenericAPIView):
         user = request.user
 
         if schedule:
-            hauls = Hauls.objects.filter(driver=user, status= HAUL_STATUS.InProcess).order_by('-created_at')
+            hauls = Hauls.objects.filter(driver=user, status= HAUL_STATUS.InProcess).order_by('-updated_at')
             serializer = self.serializer_class(hauls, many=True)
             return Response(success_message_helper(serializer.data, 'Hauls successfully fetched'),
                             status=status.HTTP_200_OK)
 
         if history:
-            hauls = Hauls.objects.filter(driver=user)
+            hauls = Hauls.objects.filter(driver=user).order_by('-updated_at')
             serializer = self.serializer_class(hauls, many=True)
             return Response(success_message_helper(serializer.data, 'Hauls successfully fetched'),
                             status=status.HTTP_200_OK)
