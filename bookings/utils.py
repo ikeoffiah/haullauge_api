@@ -4,6 +4,7 @@ from core.settings import FCM_SERVER_KEY
 from notification.utils import create_notification
 import math
 from datetime import datetime
+import re
 
 #this would be used to calculate the distance of a truck from the a location it is booked
 
@@ -31,11 +32,22 @@ def haversine_distance(lat1, lon1, lat2, lon2):
     return distance
 
 
+
+
+def is_valid_time_format(time_value):
+    # Regular expression to match "4:30 pm" format
+    pattern = r'\d{1,2}:\d{2} [ap]m'
+    return re.match(pattern, time_value) is not None
+
 def format_string_datetime(date_value, time_value):
-    print(date_value)
-    print(time_value)
-    print("----------------------------------------------------------->>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-    combined_datetime = datetime.strptime(date_value + " " + f"{time_value}", "%Y-%m-%d %I:%M %p")
+    # Convert the time_value to a 12-hour format with 'am' or 'pm'
+    is_proper = is_valid_time_format(time_value)
+    if not is_proper:
+
+        time_obj = datetime.strptime(time_value, "%H:%M").strftime("%I:%M %p")
+    else:
+        time_obj = time_value
+    combined_datetime = datetime.strptime(date_value + " " + time_obj, "%Y-%m-%d %I:%M %p")
     formatted_datetime = combined_datetime.strftime("%Y-%m-%dT%H:%M:%S.%fZ")
     return formatted_datetime
 
