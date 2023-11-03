@@ -36,7 +36,7 @@ def haversine_distance(lat1, lon1, lat2, lon2):
 
 def is_valid_time_format(time_value):
     # Regular expression to match "4:30 pm" format
-    pattern = r'\d{1,2}:\d{2} [ap]m'
+    pattern =  r'\d{1,2}:\d{2} [aApP][mM]'
     return re.match(pattern, time_value) is not None
 
 def format_string_datetime(date_value, time_value):
