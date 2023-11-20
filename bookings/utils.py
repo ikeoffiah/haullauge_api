@@ -59,43 +59,43 @@ def calculatePrice(distance, load, fuel_price):
 
 def lessthan10(distance, load, fuel_price):
     if distance < 50:
-        price = (load * distance * fuel_price) / 4
+        price = (load * distance * fuel_price)
         return price
     if distance >49 and distance < 100:
-        price = (load * distance * fuel_price) / 6
+        price = (load * distance * fuel_price)
         return price
     if distance >99 and distance < 200:
-        price = (load * distance * fuel_price) / 8
+        price = (load * distance * fuel_price)
         return price
     if distance > 199 and distance < 400:
-        price = (load * distance * fuel_price) / 10
+        price = (load * distance * fuel_price)
         return price
     if distance > 399 and distance < 800:
-        price = (load * distance * fuel_price) / 12
+        price = (load * distance * fuel_price)
         return price
     if distance > 799:
-        price = (load * distance * fuel_price) / 14
+        price = (load * distance * fuel_price)
         return price
 
 
 def others(distance, load, fuel_price):
     if distance < 50:
-        price = (load * distance * fuel_price) / 6
+        price = (load * distance * fuel_price)
         return price
     if distance >49 and distance < 100:
-        price = (load * distance * fuel_price) / 12
+        price = (load * distance * fuel_price)
         return price
     if distance >99 and distance < 200:
-        price = (load * distance * fuel_price) / 15
+        price = (load * distance * fuel_price)
         return price
     if distance > 199 and distance < 400:
-        price = (load * distance * fuel_price) / 18
+        price = (load * distance * fuel_price)/4
         return price
     if distance > 399 and distance < 800:
-        price = (load * distance * fuel_price) / 20
+        price = (load * distance * fuel_price) / 4
         return price
     if distance > 799:
-        price = (load * distance * fuel_price) / 22
+        price = (load * distance * fuel_price) / 4
         return price
 
 
