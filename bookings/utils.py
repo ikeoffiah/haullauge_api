@@ -73,6 +73,7 @@ def lessthan10(distance, load, fuel_price):
     if distance > 399 and distance < 800:
         price = (load * distance * fuel_price)
         return price
+
     if distance > 799:
         price = (load * distance * fuel_price)
         return price
