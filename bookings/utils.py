@@ -53,11 +53,15 @@ def format_string_datetime(date_value, time_value):
 
 def calculatePrice(distance, load, fuel_price):
     if load < 5:
-        return round(lessthan10(distance, load, fuel_price)/2)
+        return round(lessthan5(distance, load, fuel_price)/2)
+    elif load == 5:
+        return round(is5(distance, load, fuel_price)/2)
+    elif load == 10:
+        return round(is10(distance, load, fuel_price) / 2)
     else:
-        return round(others(distance, load, fuel_price)/2)
+        return round(is20(distance, load, fuel_price) / 2)
 
-def lessthan10(distance, load, fuel_price):
+def lessthan5(distance, load, fuel_price):
     if distance < 50:
         price = (load * distance * fuel_price)
         if price < 100:
@@ -90,7 +94,7 @@ def lessthan10(distance, load, fuel_price):
         return price
 
 
-def others(distance, load, fuel_price):
+def is5(distance, load, fuel_price):
     if distance < 50:
         price = (load * distance * fuel_price) / 2.7
         return price
@@ -110,7 +114,46 @@ def others(distance, load, fuel_price):
         price = (load * distance * fuel_price) / 12.7
         return price
 
+def is10(distance, load, fuel_price):
+    if distance < 50:
+        price = (load * distance * fuel_price) / 3.7
+        return price
+    if distance > 49 and distance < 100:
+        price = (load * distance * fuel_price) / 5.7
+        return price
+    if distance > 99 and distance < 200:
+        price = (load * distance * fuel_price) / 7.7
+        return price
+    if distance > 199 and distance < 400:
+        price = (load * distance * fuel_price) / 9.7
+        return price
+    if distance > 399 and distance < 800:
+        price = (load * distance * fuel_price) / 11.7
+        return price
+    if distance > 799:
+        price = (load * distance * fuel_price) / 13.7
+        return price
 
+
+def is20(distance, load, fuel_price):
+    if distance < 50:
+        price = (load * distance * fuel_price) / 4.7
+        return price
+    if distance > 49 and distance < 100:
+        price = (load * distance * fuel_price) / 6.7
+        return price
+    if distance > 99 and distance < 200:
+        price = (load * distance * fuel_price) / 8.7
+        return price
+    if distance > 199 and distance < 400:
+        price = (load * distance * fuel_price) / 10.7
+        return price
+    if distance > 399 and distance < 800:
+        price = (load * distance * fuel_price) / 12.7
+        return price
+    if distance > 799:
+        price = (load * distance * fuel_price) / 14.7
+        return price
 
 def send_push_notification(user_id,message, Title):
     user = User.objects.get(id=user_id)
