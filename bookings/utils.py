@@ -65,16 +65,16 @@ def lessthan10(distance, load, fuel_price):
         price = (load * distance * fuel_price)
         return price
     if distance >99 and distance < 200:
-        price = (load * distance * fuel_price)
+        price = (load * distance * fuel_price)/1.5
         return price
     if distance > 199 and distance < 400:
-        price = (load * distance * fuel_price)
+        price = (load * distance * fuel_price)/1.5
         return price
     if distance > 399 and distance < 800:
-        price = (load * distance * fuel_price)
+        price = (load * distance * fuel_price)/1.5
         return price
     if distance > 799:
-        price = (load * distance * fuel_price)
+        price = (load * distance * fuel_price)/1.5
         return price
 
 
@@ -83,19 +83,19 @@ def others(distance, load, fuel_price):
         price = (load * distance * fuel_price)
         return price
     if distance >49 and distance < 100:
-        price = (load * distance * fuel_price)
+        price = (load * distance * fuel_price)/4.5
         return price
     if distance >99 and distance < 200:
-        price = (load * distance * fuel_price)
+        price = (load * distance * fuel_price)/6.5
         return price
     if distance > 199 and distance < 400:
-        price = (load * distance * fuel_price)/4
+        price = (load * distance * fuel_price)/8.5
         return price
     if distance > 399 and distance < 800:
-        price = (load * distance * fuel_price) / 4
+        price = (load * distance * fuel_price) / 10.5
         return price
     if distance > 799:
-        price = (load * distance * fuel_price) / 4
+        price = (load * distance * fuel_price) / 12.5
         return price
 
 
