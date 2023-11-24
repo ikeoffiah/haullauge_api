@@ -52,7 +52,7 @@ def format_string_datetime(date_value, time_value):
     return formatted_datetime
 
 def calculatePrice(distance, load, fuel_price):
-    if load < 10:
+    if load < 5:
         return round(lessthan10(distance, load, fuel_price)/2)
     else:
         return round(others(distance, load, fuel_price)/2)
