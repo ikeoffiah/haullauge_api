@@ -19,7 +19,6 @@ def generate_send_otp(phone_number):
     otp = totp.now()
     content = f"Your otp is {otp}. It expires in 5 minutes"
     send_sms(phone_number, content)
-    print(otp)
     return {'secret': secret}
 
 
